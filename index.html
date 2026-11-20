@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unknown — GitHub Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg-paper: #faf7f2;
+      --bg-card: #fffdf9;
+      --bg-soft: #f0ebe3;
+      --ink: #353a32;
+      --ink-muted: #687062;
+      --sage-deep: #607648;
+      --sage-mid: #8fab82;
+      --sage-wash: #e8efe3;
+      --blush: #f6cecc;
+      --blush-deep: #e89b96;
+      --blush-wash: #fcf0ef;
+      --border: #e3dcd0;
+      --shadow-soft: 0 8px 24px rgba(96, 118, 72, 0.06);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-paper);
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(143, 171, 130, 0.12) 0%, transparent 42%),
+        radial-gradient(circle at 88% 18%, rgba(246, 206, 204, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 80% 85%, rgba(96, 118, 72, 0.08) 0%, transparent 45%);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2.25rem 1.25rem 4rem;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Gentle Snoopy-style line-art accents */
+    .doodle {
+      display: inline-block;
+      color: var(--sage-deep);
+      flex-shrink: 0;
+    }
+
+    .hero {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.75rem 2rem;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-top-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: "Caveat", cursive;
+      font-size: 1.2rem;
+      color: var(--sage-deep);
+      background: var(--sage-wash);
+      padding: 0.2rem 0.85rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 1rem;
+    }
+
+    .banner-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      margin-bottom: 1.35rem;
+    }
+
+    .banner-wrap img {
+      display: block;
+      width: 100%;
+      max-height: 290px;
+      object-fit: cover;
+    }
+
+    .sparkles {
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--sage-mid);
+      margin-bottom: 0.35rem;
+    }
+
+    h1 {
+      font-family: "Lora", Georgia, serif;
+      font-size: clamp(1.65rem, 3.6vw, 2.2rem);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .tagline {
+      display: inline-block;
+      font-family: "Lora", Georgia, serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink);
+      background: linear-gradient(180deg, transparent 52%, var(--blush-wash) 52%);
+      padding: 0.1rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .snoopy-strip {
+      margin-top: 1.35rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-family: "Caveat", cursive;
+      font-size: 1.22rem;
+      color: var(--ink-muted);
+    }
+
+    section.card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.65rem 1.75rem;
+      margin-top: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: "Lora", Georgia, serif;
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: var(--sage-deep);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 0.85rem;
+      color: var(--ink);
+      font-size: 0.97rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-list {
+      list-style: none;
+      margin: 1rem 0 1.25rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .about-list li {
+      background: var(--bg-soft);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.94rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .about-list li strong {
+      color: var(--sage-deep);
+      font-weight: 600;
+    }
+
+    .quote-box {
+      text-align: center;
+      font-family: "Lora", Georgia, serif;
+      font-style: italic;
+      color: var(--ink-muted);
+      background: var(--blush-wash);
+      border-left: 3px solid var(--blush-deep);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.96rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+    }
+
+    .pill-sage-dark {
+      background: var(--sage-deep);
+      color: #ffffff;
+    }
+
+    .pill-sage-light {
+      background: var(--sage-mid);
+      color: #ffffff;
+    }
+
+    .pill-blush {
+      background: var(--blush);
+      color: #353a32;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .stack-group {
+      background: var(--bg-soft);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+    }
+
+    .stack-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-muted);
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+    }
+
+    .goals-list {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-soft);
+      font-size: 0.94rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.18s ease;
+    }
+
+    .goal-item:hover {
+      background: var(--sage-wash);
+    }
+
+    .goal-item input[type="checkbox"] {
+      accent-color: var(--sage-deep);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .goal-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: var(--ink-muted);
+    }
+
+    /* Project Corner accordions */
+    .corner-intro {
+      color: var(--ink-muted);
+      font-size: 0.94rem;
+      margin-bottom: 1rem;
+    }
+
+    details.folder {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+    }
+
+    details.folder:last-child {
+      margin-bottom: 0;
+    }
+
+    details.folder > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.85rem 1.1rem;
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--ink);
+      background: var(--bg-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.18s ease;
+    }
+
+    details.folder > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.folder > summary:hover {
+      background: var(--sage-wash);
+    }
+
+    details.folder > summary::after {
+      content: "+";
+      font-weight: 500;
+      color: var(--sage-deep);
+      font-size: 1.15rem;
+    }
+
+    details.folder[open] > summary::after {
+      content: "−";
+    }
+
+    .folder-body {
+      padding: 0.95rem 1.1rem 1.1rem;
+      font-size: 0.91rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.89rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.7rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--sage-deep);
+      font-weight: 600;
+      background: var(--sage-wash);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    a.view-link {
+      color: var(--sage-deep);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid var(--sage-mid);
+      padding-bottom: 1px;
+    }
+
+    a.view-link:hover {
+      color: var(--ink);
+      border-bottom-color: var(--blush-deep);
+    }
+
+    .soon-list {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--ink-muted);
+    }
+
+    .soon-list li::before {
+      content: "✦ ";
+      color: var(--blush-deep);
+    }
+
+    /* Connect buttons */
+    .connect-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .connect-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      padding: 0.55rem 1.05rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .connect-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.94;
+    }
+
+    .btn-email {
+      background: var(--blush);
+      color: var(--sage-deep);
+    }
+
+    .btn-github {
+      background: var(--sage-mid);
+      color: #ffffff;
+    }
+
+    .btn-facebook {
+      background: #f0e7e8;
+      color: var(--sage-deep);
+      border: 1px solid var(--border);
+    }
+
+    .btn-instagram {
+      background: #f5a29c;
+      color: #ffffff;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem;
+    }
+
+    .footer-note h3 {
+      font-family: "Lora", Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--sage-deep);
+      margin-bottom: 0.45rem;
+    }
+
+    .footer-note code {
+      display: inline-block;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: var(--sage-deep);
+    }
+
+    .footer-divider::before,
+    .footer-divider::after {
+      content: "";
+      height: 1px;
+      width: 56px;
+      background: var(--border);
+    }
+
+    .kaomoji-signoff {
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 560px) {
+      .hero, section.card {
+        padding: 1.3rem 1.15rem;
+      }
+      .snoopy-strip {
+        flex-direction: column;
+        gap: 0.35rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- Hero / Header -->
+    <header class="hero">
+      <div class="hero-top-note">
+        <svg class="doodle" width="38" height="24" viewBox="0 0 38 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 14L14 5L25 14" />
+          <path d="M6 12v9h16v-9" />
+          <path d="M26 17c2-1 5-1 7 0 1.5.7 2 2 1 3-1 .8-3 .5-4 0" />
+          <path d="M29 5h4l-3 3h4" stroke-width="1.3" />
+        </svg>
+        <span>quiet afternoon notes &amp; little code experiments</span>
+      </div>
+
+      <div class="banner-wrap">
+        <img
+          src="https://raw.githubusercontent.com/rochell-lacandula/RL_Java_Projects/main/ReadMe.md/sage-bloom-banner.png.png"
+          alt="Sage Bloom Banner"
+        />
+      </div>
+
+      <div class="sparkles">˚ ༘ ೀ⋆｡˚</div>
+      <h1>Hello, World! I'm Unknown! ♡</h1>
+      <div class="sparkles">˚ ༘ ೀ⋆｡˚</div>
+      <div style="margin-top: 0.55rem;">
+        <span class="tagline">A curious mind in a world full of possibilities.</span>
+      </div>
+
+      <div class="snoopy-strip">
+        <svg class="doodle" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21V11" />
+          <path d="M12 15c-3.5 0-6-2.2-6-5 3 0 5.2 1.8 6 5z" />
+          <path d="M12 13c3.5 0 6-2.2 6-5-3 0-5.2 1.8-6 5z" />
+        </svg>
+        <span>“Happiness is a warm cup of tea and a program that compiles.”</span>
+      </div>
+    </header>
+
+    <!-- About Me -->
+    <section class="card" id="about">
+      <h2 class="section-title">
+        <span>🌿</span>
+        <span>ABOUT ME</span>
+      </h2>
+      <p>
+        Hello! I'm a first-year <strong>BS Information Technology student at National University</strong>.
+      </p>
+      <p>
+        I'm a curious mind with a creative side, always looking for something new to learn, explore, and create. I'm still at the beginning of my coding journey, but I'm excited to see where it takes me!
+      </p>
+
+      <ul class="about-list">
+        <li><span>🌱</span> <div><strong>Currently learning:</strong> Java and programming fundamentals</div></li>
+        <li><span>💡</span> <div><strong>Interested in:</strong> App development, web development, UI/UX, and game development</div></li>
+        <li><span>🎨</span> <div><strong>Creative side:</strong> Art, photography, and little creative projects</div></li>
+        <li><span>🌊</span> <div><strong>Outside the screen:</strong> Traveling, beach trips, music, and discovering new food</div></li>
+        <li><span>🦋</span> <div><strong>Fun fact:</strong> I love collecting experiences as much as I love collecting new ideas!</div></li>
+      </ul>
+
+      <blockquote class="quote-box">
+        “There's always something new to learn, somewhere new to go, and something new to create.”
+      </blockquote>
+    </section>
+
+    <!-- Currently Exploring -->
+    <section class="card" id="exploring">
+      <h2 class="section-title">
+        <span>🍃</span>
+        <span>CURRENTLY EXPLORING</span>
+      </h2>
+      <div class="pill-row">
+        <span class="pill pill-sage-dark">Programming</span>
+        <span class="pill pill-blush">Creative Projects</span>
+        <span class="pill pill-sage-light">App Development</span>
+        <span class="pill pill-blush">Web Development</span>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="card" id="stack">
+      <h2 class="section-title">
+        <span>🖥️</span>
+        <span>TECH STACK</span>
+      </h2>
+      <div class="stack-grid">
+        <div class="stack-group">
+          <div class="stack-label">Currently Learning</div>
+          <div class="pill-row">
+            <span class="pill pill-sage-dark">☕ Java</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <div class="stack-label">Tools I Use</div>
+          <div class="pill-row">
+            <span class="pill pill-blush">💻 VS Code</span>
+            <span class="pill pill-sage-dark">🐙 GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Little Goals -->
+    <section class="card" id="goals">
+      <h2 class="section-title">
+        <span>🌷</span>
+        <span>MY LITTLE GOALS</span>
+      </h2>
+      <ul class="goals-list">
+        <li>
+          <label class="goal-item">
+            <input type="checkbox" />
+            <span>Strengthen my programming fundamentals</span>
+          </label>
+        </li>
+        <li>
+          <label class="goal-item">
+            <input type="checkbox" />
+            <span>Explore different programming languages</span>
+          </label>
+        </li>
+        <li>
+          <label class="goal-item">
+            <input type="checkbox" />
+            <span>Build my first personal project</span>
+          </label>
+        </li>
+        <li>
+          <label class="goal-item">
+            <input type="checkbox" />
+            <span>Learn web and app development</span>
+          </label>
+        </li>
+        <li>
+          <label class="goal-item">
+            <input type="checkbox" />
+            <span>Improve my problem-solving skills</span>
+          </label>
+        </li>
+        <li>
+          <label class="goal-item">
+            <input type="checkbox" />
+            <span>Create something I'm genuinely proud of</span>
+          </label>
+        </li>
+      </ul>
+    </section>
+
+    <!-- My Project Corner -->
+    <section class="card" id="projects">
+      <h2 class="section-title">
+        <span>🌼</span>
+        <span>MY PROJECT CORNER</span>
+      </h2>
+      <p class="corner-intro">
+        A little collection of my learning progress, experiments, and projects.
+      </p>
+
+      <details class="folder" open>
+        <summary>📁 Midterm Lab Tasks</summary>
+        <div class="folder-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Description</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lab Task 01</td>
+                  <td>Using 2D array to store integer values and calculate row, column, and diagonal sum.</td>
+                  <td>
+                    <a
+                      class="view-link"
+                      href="https://github.com/unknown/RL_Java_Projects/tree/2b86ec0e165a6b95169335276662e328635961c5/MIDTERMS/Labtask1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Lab Task 02</td>
+                  <td>Using 3D array to store and process students average from different section.</td>
+                  <td>
+                    <a
+                      class="view-link"
+                      href="https://github.com/unknown/RL_Java_Projects/tree/86fdf0eb5a1028dcdac12f7604c697562a494e1d/MIDTERMS/Labtask2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Lab Task 03</td>
+                  <td>Description</td>
+                  <td><a class="view-link" href="#projects">View</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details class="folder">
+        <summary>🔒 Final Lab Tasks</summary>
+        <div class="folder-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Description</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Final Task 01</td>
+                  <td>Description</td>
+                  <td><a class="view-link" href="#projects">View</a></td>
+                </tr>
+                <tr>
+                  <td>Final Task 02</td>
+                  <td>Description</td>
+                  <td><a class="view-link" href="#projects">View</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details class="folder">
+        <summary>🔐 Personal Projects</summary>
+        <div class="folder-body">
+          <ul class="soon-list">
+            <li>Coming soon...</li>
+            <li>More ideas are loading!</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- Let's Connect -->
+    <section class="card" id="connect">
+      <h2 class="section-title">
+        <span>💌</span>
+        <span>LET'S CONNECT!</span>
+      </h2>
+      <div class="connect-links">
+        <a class="connect-btn btn-email" href="mailto:unknown@example.com">✉️ Email</a>
+        <a
+          class="connect-btn btn-github"
+          href="https://github.com/unknown"
+          target="_blank"
+          rel="noopener noreferrer"
+        >🐙 GitHub</a>
+        <a
+          class="connect-btn btn-facebook"
+          href="https://www.facebook.com/unknown"
+          target="_blank"
+          rel="noopener noreferrer"
+        >f Facebook</a>
+        <a
+          class="connect-btn btn-instagram"
+          href="https://www.instagram.com/unknown/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >📷 Instagram</a>
+      </div>
+      <p>
+        Always open to learning, sharing ideas, collaborating, or simply meeting fellow learners!
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-note">
+      <h3>♡ Thank you for stopping by!</h3>
+      <code>Currently under development — just like my code.</code>
+      <div class="footer-divider" aria-label="Snoopy kaomoji">
+        <span class="kaomoji-signoff">੯‧̀͡⬮</span>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
